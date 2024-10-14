@@ -1,0 +1,115 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.heading {
+    font-size: 2.5rem;
+    color: #06ff00;
+    margin-bottom: 40px;
+}
+
+.container {
+    display: flex; /* Use flexbox to arrange children side by side */
+    justify-content: center; /* Center items horizontally */
+    padding: 20px;
+    max-width: 1200px; /* Set a maximum width for the container */
+    margin: 0 auto; /* Center the container */
+}
+
+.red-team-container, .blue-team-container {
+    width: 45%; /* Set width to ensure both teams fit side by side */
+    margin: 0 20px; /* Margin between sections */
+}
+
+.red-team{
+    padding: 20px; /* Padding inside each team section */
+    border: 2px solid #ff0000; /* Border around the team sections */
+    border-radius: 10px; /* Rounded corners for team sections */
+    background-color: #400202; /* Background color for team sections */
+}
+
+.blue-team {
+	padding: 20px; /* Padding inside each team section */
+    border: 2px solid #0000ff; /* Border around the team sections */
+    border-radius: 10px; /* Rounded corners for team sections */
+    background-color: #06012d; /* Background color for team sections */
+}
+
+.red-title {
+    color: red;
+}
+
+.blue-title {
+    color: blue;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.stage {
+    margin: 15px 0;
+    border: 1px solid #ffffff; /* Border for each stage */
+    border-radius: 5px; /* Rounded corners for stages */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.node-title {
+/*    background-color: #333; Background color for title */
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.3s ease; /* Separate transition for background color */
+}
+
+.red-node-title:hover {
+    color: red;
+    border-left: 5px solid red;
+    background-color: #ffffff; /* Red background on hover */
+}
+
+.blue-node-title:hover {
+    color: blue;
+    border-left: 5px solid blue;
+    background-color: #ffffff; /* Blue background on hover */
+}
+
+.node-content {
+    display: none; /* Initially hidden content */
+    padding: 15px;
+/*    background-color: #222;  Background color for content */
+    border-top: 1px solid #ffffff; /* Top border for content */
+}
+
+/* Image styling */
+.team-image {
+    max-width: 60%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Center align image */
+    margin: 0 auto 20px; /* Center and add bottom margin */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+    
+    h1 {
+        font-size: 2rem; /* Smaller font size on mobile */
+    }
+    
+    .stage {
+        font-size: 0.9rem; /* Smaller font size for stages */
+    }
+
+    .red-team-container, .blue-team-container {
+        width: 100%; /* Full width on mobile */
+        margin: 10px 0; /* Margin between sections */
+    }
+}
