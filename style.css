@@ -1,0 +1,572 @@
+/* Color & Theme Variables */
+:root {
+  --kali-bg: #1a1a1a;
+  --kali-surface: #2c2c2c;
+  --kali-border: #4a4a4a;
+  --kali-accent: #4d98e4;
+  --kali-text: #dcdcdc;
+  --kali-text-dim: #a0a0a0;
+  --kali-green: #00ff00;
+  --kali-red: #ff3333;
+  --kali-orange: #ffaa00;
+  --kali-terminal-bg: #0d1117;
+  --kali-terminal-green: #7c3aed;
+  --kali-terminal-blue: #2563eb;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: var(--kali-bg);
+  font-family: 'Fira Code', monospace;
+  color: var(--kali-text);
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+#kali-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  background: linear-gradient(to bottom, #3a3a3a, #2c2c2c);
+  border-bottom: 1px solid var(--kali-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  font-size: 0.85rem;
+  z-index: 1000;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+}
+
+.header-left, .header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.header-title {
+  font-weight: 500;
+  color: var(--kali-accent);
+  font-size: 0.9rem;
+}
+
+.header-menu-item, .header-user {
+  padding: 4px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.header-menu-item:hover, .header-user:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.header-menu-item.active, .header-user.active {
+  background: var(--kali-accent);
+  color: white;
+}
+
+.kali-logo {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0.9);
+}
+
+.header-indicators {
+  display: flex;
+  gap: 4px;
+}
+
+.indicator {
+  padding: 2px 4px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+}
+
+.indicator:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.header-clock {
+  padding: 2px 6px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+  font-family: 'Fira Code', monospace;
+}
+
+.header-clock:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+/* Dropdown Menus */
+#dropdown-menus {
+  position: fixed;
+  top: 32px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background: var(--kali-surface);
+  border: 1px solid var(--kali-border);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  min-width: 240px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.menu-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  color: var(--kali-text);
+  transition: background 0.2s;
+  font-size: 0.85rem;
+}
+
+.menu-item:hover {
+  background: var(--kali-accent);
+  color: white;
+}
+
+.menu-category {
+  padding: 6px 12px;
+  color: var(--kali-accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.8rem;
+}
+
+.menu-category:hover {
+  background: rgba(77, 152, 228, 0.2);
+}
+
+.menu-separator {
+  height: 1px;
+  background: var(--kali-border);
+  margin: 4px 8px;
+}
+
+/* Desktop */
+#desktop {
+  height: calc(100vh - 32px);
+  width: 100%;
+  background: url('assets/imgs/Kali_Linux.jpg') center/cover fixed no-repeat;
+  position: relative;
+  margin-top: 32px;
+}
+
+#desktop-icons-container {
+  position: absolute;
+  inset: 0;
+}
+
+.desktop-icon {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  width: 80px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  user-select: none;
+}
+
+.desktop-icon:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.desktop-icon img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+/* Dock */
+#dock {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 60px;
+  background: rgb(255 255 255 / 80%);
+  #backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+  z-index: 500;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.dock-icon {
+  width: 40px;
+  height: 40px;
+  color: #ccc;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.dock-icon:hover {
+  transform: scale(1.1);
+  color: white;
+  background: rgba(255,255,255,0.1);
+}
+
+.dock-icon.active::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--kali-accent);
+}
+
+.dock-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.8);
+  transition: filter 0.2s;
+  border-radius: 2px;
+}
+
+.dock-icon:hover .dock-icon-img {
+  filter: brightness(1);
+}
+
+/* Windows */
+.window {
+  position: absolute;
+  min-width: 400px;
+  min-height: 280px;
+  background: var(--kali-surface);
+  border: 1px solid var(--kali-border);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.window.minimized {
+  display: none;
+}
+
+.window-header {
+  background: linear-gradient(to bottom, #3a3a3a, #2c2c2c);
+  padding: 8px 12px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--kali-border);
+}
+
+.window-title {
+  color: var(--kali-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.window-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.window-controls button {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  cursor: pointer;
+  background: #555;
+  transition: all 0.2s;
+}
+
+.window-controls button:hover {
+  transform: scale(1.1);
+}
+
+.close-btn { background: #ff5f56 !important; }
+.min-btn { background: #ffbd2e !important; }
+.max-btn { background: #27c93f !important; }
+
+.window-body {
+  flex-grow: 1;
+  padding: 12px;
+  overflow: auto;
+  color: var(--kali-text);
+  font-size: 0.9rem;
+  background: var(--kali-bg);
+}
+
+/* File Explorer */
+.file-explorer-body {
+  padding: 8px;
+}
+
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.85rem;
+}
+
+.file-item:hover {
+  background: var(--kali-accent);
+  color: white;
+}
+
+.file-icon {
+  font-size: 1.2rem;
+  width: 20px;
+  text-align: center;
+}
+
+.current-path {
+  background: var(--kali-surface);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--kali-border);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8rem;
+  color: var(--kali-accent);
+}
+
+/* Terminal */
+.terminal-body {
+  background: var(--kali-terminal-bg);
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Fira Code', monospace;
+}
+
+.terminal-output {
+  flex-grow: 1;
+  overflow-y: auto;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.terminal-line {
+  margin-bottom: 2px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+.terminal-prompt {
+  color: var(--kali-green);
+  font-weight: 600;
+}
+
+.terminal-prompt .user {
+  color: var(--kali-accent);
+}
+
+.terminal-prompt .path {
+  color: var(--kali-orange);
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--kali-text);
+  flex-grow: 1;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.85rem;
+  margin-left: 4px;
+}
+
+/* Content Styling */
+.content-section {
+  margin-bottom: 20px;
+}
+
+.content-section h3 {
+  color: var(--kali-accent);
+  margin-bottom: 8px;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--kali-border);
+  padding-bottom: 4px;
+}
+
+.skill-category {
+  margin-bottom: 12px;
+}
+
+.skill-category h4 {
+  color: var(--kali-orange);
+  margin-bottom: 4px;
+  font-size: 0.9rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.skill-tag {
+  background: var(--kali-accent);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-item, .cert-item, .exp-item {
+  background: var(--kali-surface);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  border-left: 3px solid var(--kali-accent);
+}
+
+.project-title, .cert-title, .exp-title {
+  color: var(--kali-accent);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.project-date, .cert-date, .exp-date {
+  color: var(--kali-text-dim);
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+/* About Me Styling */
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid var(--kali-accent);
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--kali-accent);
+  margin: 0;
+}
+
+.profile-description {
+  max-width: 400px;
+  line-height: 1.6;
+  color: var(--kali-text);
+  margin: 0;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+  #kali-header {
+    height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  #desktop {
+    margin-top: 40px;
+    height: calc(100vh - 40px);
+  }
+  
+  .header-indicators {
+    display: none;
+  }
+  
+  .header-title {
+    display: none;
+  }
+  
+  #dock {
+    top: auto;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    flex-direction: row;
+    justify-content: center;
+    transform: none;
+    border-top: 1px solid var(--kali-border);
+    border-right: none;
+  }
+  
+  .dock-icon.active::after {
+    top: auto;
+    right: 50%;
+    bottom: -8px;
+    transform: translateX(50%);
+  }
+  
+  .window {
+    min-width: 90vw !important;
+    width: 90vw !important;
+    height: 70vh !important;
+  }
+  
+  #desktop-icons-container {
+    display: none;
+  }
+}
